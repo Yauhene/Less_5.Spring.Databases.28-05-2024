@@ -16,7 +16,6 @@ public class Book {
 
   public Book(String name) {
     this(sequence++, name);
-//    log.info("Enter to Book constructor...");
   }
 
 

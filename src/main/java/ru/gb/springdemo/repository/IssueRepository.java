@@ -19,10 +19,6 @@ public class IssueRepository {
             new ru.gb.springdemo.model.Issue(2, 2),
             new ru.gb.springdemo.model.Issue(1, 3)
     ));
-    log.info("---- Выдачи на старте:");
-    for (Issue it: issues) {
-      log.info(it + "\n");
-    }
   }
 
   public void save(Issue issue) {
