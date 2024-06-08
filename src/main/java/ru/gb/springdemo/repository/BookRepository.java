@@ -14,7 +14,7 @@ import java.util.Objects;
 @Repository
 public class BookRepository {
 
-  private final List<Book> books;
+  private static List<Book> books = null;
 
   public BookRepository() {
 
@@ -32,7 +32,7 @@ public class BookRepository {
     ));
   }
 
-  public List<Book> getAll() {
+  public static List<Book> getAll() {
     return List.copyOf(books);
   }
 
