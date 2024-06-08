@@ -2,7 +2,7 @@ package ru.gb.springdemo.repository;
 
 import lombok.extern.slf4j.*;
 import org.springframework.stereotype.Repository;
-import ru.gb.springdemo.model.Issue;
+import ru.gb.springdemo.model.*;
 
 import java.util.*;
 
@@ -19,6 +19,7 @@ public class IssueRepository {
             new ru.gb.springdemo.model.Issue(2, 2),
             new ru.gb.springdemo.model.Issue(1, 3)
     ));
+    Issue.setReturnTimestamp(issues.get(1));
   }
 
   public void save(Issue issue) {
@@ -52,6 +53,4 @@ public class IssueRepository {
             .findFirst()
             .orElse(null);
   }
-
-
 }

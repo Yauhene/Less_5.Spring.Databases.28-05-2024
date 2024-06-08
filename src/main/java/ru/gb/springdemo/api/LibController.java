@@ -14,15 +14,29 @@ import java.util.*;
 @Controller
 public class LibController {
 
-@RequestMapping("/ui/library")
-    public String library() {
-    return "library";
-}
+    @RequestMapping("/ui/library")
+        public String library() {
+        return "library";
+    }
 
-@GetMapping("/ui/books")
-    public String books(Model model) {
-        List<Book> bList = BookRepository.getAll();
-        model.addAttribute("books", bList);
-    return "books";
+    @GetMapping("/ui/books")
+        public String books(Model model) {
+            List<Book> bList = BookRepository.getAll();
+            model.addAttribute("books", bList);
+        return "books";
+        }
+
+    @GetMapping("/ui/readers")
+    public String readers(Model model) {
+        List<Reader> rList = ReaderRepository.getReaders();
+        model.addAttribute("readers", rList);
+        return "readers";
+    }
+
+    @GetMapping("/ui/issues")
+    public String issues(Model model) {
+        List<Issue> iList = IssueRepository.getAll();
+        model.addAttribute("issues", iList);
+        return "issues";
     }
 }

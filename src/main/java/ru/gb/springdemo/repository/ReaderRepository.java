@@ -11,11 +11,16 @@ import java.util.Objects;
 @Repository
 public class ReaderRepository {
 
-  private final List<Reader> readers;
+  private static List<Reader> readers;
   private final List<Issue> issues = IssueRepository.getAll();
 
   public ReaderRepository() {
     this.readers = new ArrayList<>();
+  }
+
+  public static List<Reader> getReaders() {
+    List<Reader> rList = List.copyOf(readers);
+    return rList;
   }
 
   @PostConstruct
@@ -28,7 +33,7 @@ public class ReaderRepository {
     ));
   }
 
-  public Reader getReaderById(long id) {
+  public static Reader getReaderById(long id) {
     return readers.stream().filter(it -> Objects.equals(it.getId(), id))
       .findFirst()
       .orElse(null);
@@ -41,5 +46,6 @@ public class ReaderRepository {
             .findFirst()
             .orElse(null);
   }
+
 
 }

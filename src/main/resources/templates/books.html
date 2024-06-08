@@ -9,15 +9,15 @@
 </head>
 <body>
     <h1>Книги</h1>
-    <tr>
-        <th>ID</th>
-        <th>. </th>
-        <th>Name</th><br>
-    </tr>
-    <tr th:each="book: ${books}">
-        <td th:text="${book.getId()}"></td>
-        <th>. </th>
-        <td th:text="${book.getName()}"></td><br>
-    </tr>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <tr th:each="book: ${books}">
+            <td th:text="${book.getId()}"></td>
+            <td th:text="${book.getName()}"></td>
+        </tr>
+    </table>
 </body>
 </html>
