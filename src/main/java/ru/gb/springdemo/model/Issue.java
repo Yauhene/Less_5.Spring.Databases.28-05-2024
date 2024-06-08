@@ -20,13 +20,18 @@ public class Issue {
   /**
    * Дата выдачи
    */
-  private final LocalDateTime timestamp;
+  private final LocalDateTime issueTimestamp;
+  /**
+   * Дата возврата
+   */
+  private final LocalDateTime returnTimestamp;
 
   public Issue(long bookId, long readerId) {
     this.id = sequence++;
     this.bookId = bookId;
     this.readerId = readerId;
-    this.timestamp = LocalDateTime.now();
+    this.issueTimestamp = LocalDateTime.now();
+    this.returnTimestamp = LocalDateTime.now();
   }
 
 }

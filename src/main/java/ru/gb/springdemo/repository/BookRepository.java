@@ -26,7 +26,9 @@ public class BookRepository {
     books.addAll(List.of(
       new Book("Война и мир"),
       new Book("Мертвые души"),
-      new Book("Чистый код")
+      new Book("Чистый код"),
+      new Book("Грязный код"),
+      new Book("Код Да Винчи")
     ));
   }
 
