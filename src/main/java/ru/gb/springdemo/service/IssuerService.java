@@ -23,8 +23,6 @@ public class IssuerService {
 
   public Issue issue(IssueRequest request) {
 
-    log.info("Зашли в IssuerService: ", request);
-
     Issue readerDebt = issueRepository.getByReader(request.getReaderId());
 
     if (bookRepository.getBookById(request.getBookId()) == null) {

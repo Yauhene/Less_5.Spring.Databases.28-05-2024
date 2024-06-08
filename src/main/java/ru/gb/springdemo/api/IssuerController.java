@@ -15,17 +15,11 @@ import java.util.*;
 @RestController
 @RequestMapping("/issue")
 public class IssuerController {
-//* 1.3 В контроллере IssueController добавить ресурс GET /issue/{id} - получить описание факта выдачи
 
   @Autowired
   private IssueRepository issueRepository;
   @Autowired
   private IssuerService service;
-
-//  @PutMapping
-//  public void returnBook(long issueId) {
-//    // найти в репозитории выдачу и проставить ей returned_at
-//  }
 
   @PostMapping
   public ResponseEntity<Issue> issueBook(@RequestBody IssueRequest request) {
@@ -37,14 +31,11 @@ public class IssuerController {
     } catch (NoSuchElementException e) {
       return ResponseEntity.notFound().build();
     }
-
-//    return ResponseEntity.status(HttpStatus.CONFLICT).body(issue);
     return ResponseEntity.status(HttpStatus.CREATED).body(issue);
   }
 
   @GetMapping(path = "/all")
   public List<Issue> getIssueList() {
-//    log.info("List of issues contains " + issueRepository.getAll().size() + " records");
     return List.copyOf(issueRepository.getAll());
   }
 

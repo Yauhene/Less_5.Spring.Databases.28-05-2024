@@ -1,5 +1,4 @@
 package ru.gb.springdemo.api;
-//2.2 В сервис читателя добавить ручку GET /reader/{id}/issue - вернуть список всех выдач для данного читателя
 
 import lombok.extern.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
