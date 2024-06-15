@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 import ru.gb.springdemo.model.*;
 import ru.gb.springdemo.repository.*;
+//import ru.gb.springdemo.repository_old.*;
 
 import java.util.*;
 
@@ -14,11 +15,11 @@ import java.util.*;
 public class BookController {
 //    1.1 Реализовать контроллер по управлению книгами с ручками:
 //    GET /book/{id} - получить описание книги, DELETE /book/{id} - удалить книгу, POST /book - создать книгу
-    private final BookRepository bookRepository;
+    private final BooksRepository booksRepository;
 
     @Autowired
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookController(BooksRepository booksRepository) {
+        this.booksRepository = booksRepository;
     }
 
     /**
@@ -26,8 +27,8 @@ public class BookController {
      * @return - список книг
      */
     @GetMapping(path = "/all")
-    public List<Book> getBooks() {
-        return bookRepository.getAll();
+    public List<Books> getBooks() {
+        return booksRepository.findAll();
     }
 
     /**
@@ -35,27 +36,36 @@ public class BookController {
      * @param id - id нужной книги
      * @return - книга
      */
+    // восстановить в новых условиях
     @GetMapping("/{id}")
-    public Book getBook(@PathVariable long id) {
-        return bookRepository.getBookById(id);
+    public Books getBook(@PathVariable long id) {
+        return booksRepository.findById(id).stream()
+                .findFirst()
+                .orElse(null);
     }
 
     /**
      * Метод добавления новой книги
-     * @param book - книга для добавления в список
+     *
+     * @param - книга для добавления в список
      * @return - список всех книг
      */
+
+    // восстановить в новых условиях
     @PostMapping("/add")
-    public Book addBook(@RequestBody Book book) {
-        return bookRepository.addBook(book);
+    public Books addBook(@RequestBody Books books) {
+//    public void addBook() {
+        return booksRepository.save(books);
     }
 
     /**
      * Метод удаления книги по ее id
      * @param id - id удаляемой книги
      */
-    @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable long id) {
-        bookRepository.deleteBook(id);
-    }
+
+    // восстановить в новых условиях
+//    @DeleteMapping("/{id}")
+//    public void deleteBook(@PathVariable long id) {
+//        booksRepository.deleteBook(id);
+//    }
 }

@@ -18,6 +18,7 @@ public class DatabaseConnector {
 
   @Autowired
   public DatabaseConnector(ApplicationEventPublisher eventPublisher) {
+
     this.eventPublisher = eventPublisher;
   }
 

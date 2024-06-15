@@ -16,6 +16,7 @@ public class MyBean {
   private int myProperty;
 
   public MyBean(MyService myService) {
+
     log.info("constructor");
   }
 
