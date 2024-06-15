@@ -1,20 +1,24 @@
 package ru.gb.springdemo.model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
+@Entity
+@Table
 @Data
-@RequiredArgsConstructor
 public class Reader {
 
-  public static long sequence = 1L;
+  public static long maxId = 1L;
 
-  private final long id;
-  @Getter
-  private final String name;
+  @Id
+  private long id;
+
+  @Column(name = "name")
+  private String name;
 
   public Reader(String name) {
 
-    this(sequence++, name);
+    this.id = maxId++;
   }
 
   public String getName() {

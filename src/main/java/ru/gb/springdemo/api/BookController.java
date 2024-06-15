@@ -46,8 +46,6 @@ public class BookController {
 
     /**
      * Метод добавления новой книги
-     *
-     * @param - книга для добавления в список
      * @return - список всех книг
      */
 
@@ -64,8 +62,8 @@ public class BookController {
      */
 
     // восстановить в новых условиях
-//    @DeleteMapping("/{id}")
-//    public void deleteBook(@PathVariable long id) {
-//        booksRepository.deleteBook(id);
-//    }
+    @DeleteMapping("/del/{id}")
+    public void deleteBook(@PathVariable long id) {
+        booksRepository.deleteById(id);
+    }
 }
