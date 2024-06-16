@@ -1,45 +1,51 @@
 package ru.gb.springdemo.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-//import ru.gb.springdemo.repository_old.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.*;
 
 /**
  * Запись о факте выдачи книги (в БД)
  */
-@Data
- @Entity
+
+@Entity
 @Table(name = "issues")
+@Data
 public class Issue {
 
-  public static long sequence = 1L;
+  public static long maxId = 1L;
 
-  private final long id;
-  private final long bookId;
-  private final long readerId;
+  @Id
+  private long id;
+
+  @Column(name = "book_id")
+  private long bookId;
+
+  @Column(name = "reader_id")
+  private long readerId;
 
   /**
    * Дата выдачи
    */
-  private final LocalDateTime issueTimestamp;
+  @Column(name = "issue_time")
+  private LocalDateTime issueTimestamp;
   /**
    * Дата возврата
    */
+  @Column(name = "return_time")
   private LocalDateTime returnTimestamp;
 
   public Issue(long bookId, long readerId) {
-    this.id = sequence++;
-    this.bookId = bookId;
-    this.readerId = readerId;
-    this.issueTimestamp = LocalDateTime.now();
-    this.returnTimestamp = null;
+    this.id = maxId++;
   }
 
-  public static void setReturnTimestamp(Issue issue) {
-    issue.returnTimestamp = LocalDateTime.now();
+  public void setReturnTimestamp() {
+
+    this.setReturnTimestamp(LocalDateTime.now());
+  }
+
+  private void setReturnTimestamp(LocalDateTime now) {
   }
 
   public long getId() {
@@ -62,23 +68,26 @@ public class Issue {
     return returnTimestamp;
   }
 
-  public String getReaderName() {
-    long readerId = this.readerId;
-    List<Reader> rList = List.copyOf(ReaderRepository.getReaders());
-    Optional<Reader> reader = rList.stream()
-            .filter(it -> Objects.equals(it.getId(), readerId))
-            .findFirst();
-    String readerName = reader.get().getName();
-    return readerName;
-  }
 
-  public String getBookName() {
-    long bookId = this.bookId;
-    List<Book> bList = List.copyOf(BookRepository_Old.getAll());
-    Optional<Book> book = bList.stream()
-            .filter(it -> Objects.equals(it.getId(), bookId))
-            .findFirst();
-    String bookName = book.get().getName();
-    return bookName;
-  }
+
+//  public String getReaderName() {
+//    long readerId = this.readerId;
+//    Readers readers = ReaderRepository.findById(readerId);
+//    List<Readers> rList = List.copyOf(ReaderRepository.findAll());
+//    Optional<Readers> reader = rList.stream()
+//            .filter(it -> Objects.equals(it.getId(), readerId))
+//            .findFirst();
+//    String readerName = reader.get().getName();
+//    return readerName;
+//  }
+
+//  public String getBookName() {
+//    long bookId = this.bookId;
+//    List<Books> bList = List.copyOf(BooksRepository.findAll());
+//    Optional<Books> book = bList.stream()
+//            .filter(it -> Objects.equals(it.getId(), bookId))
+//            .findFirst();
+//    String bookName = book.get().getName();
+//    return bookName;
+//  }
 }

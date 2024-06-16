@@ -13,7 +13,6 @@ import static ru.gb.springdemo.repository.BooksRepository.*;
 public class Books {
 
   public static long maxId = 1;
-
   @Id
   private long id;
 
@@ -21,7 +20,7 @@ public class Books {
   private String name;
 
   public Books() {
+
     this.id = maxId++;
   }
-
 }

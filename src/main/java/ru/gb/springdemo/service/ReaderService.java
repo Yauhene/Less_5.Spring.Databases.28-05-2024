@@ -8,12 +8,13 @@ import ru.gb.springdemo.repository.*;
 
 @Service
 @RequiredArgsConstructor
-public class BooksService {
+public class ReaderService {
     @Autowired
-    private BooksRepository booksRepository;
+    private ReaderRepository readerRepository;
 
 
-    public Books saveBooks(Books books) {
-        return booksRepository.save(books);
+    public Readers saveReaders(Readers readers) {
+
+        return readerRepository.save(readers);
     }
 }

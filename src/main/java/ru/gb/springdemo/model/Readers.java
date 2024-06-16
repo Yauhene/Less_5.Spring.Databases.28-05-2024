@@ -6,7 +6,7 @@ import lombok.*;
 @Entity
 @Table
 @Data
-public class Reader {
+public class Readers {
 
   public static long maxId = 1L;
 
@@ -16,7 +16,7 @@ public class Reader {
   @Column(name = "name")
   private String name;
 
-  public Reader(String name) {
+  public Readers(String name) {
 
     this.id = maxId++;
   }

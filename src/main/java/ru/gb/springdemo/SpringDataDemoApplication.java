@@ -13,8 +13,12 @@ public class SpringDataDemoApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(SpringDataDemoApplication.class, args);
 		BooksRepository booksRepository = context.getBean(BooksRepository.class);
+		ReaderRepository readerRepository = context.getBean(ReaderRepository.class);
+		IssueRepository issueRepository = context.getBean(IssueRepository.class);
+
 		System.out.println(booksRepository.findAll());
 		Books.maxId = booksRepository.queryMaxId() + 1;
+		Readers.maxId = readerRepository.queryMaxId() + 1;
+		Issue.maxId = issueRepository.queryIssuesMaxId() + 1;
 	}
-
 }
