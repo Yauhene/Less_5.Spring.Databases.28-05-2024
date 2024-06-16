@@ -19,16 +19,20 @@ public class ReadersController {
 
     @Autowired
     public void ReaderController(ReaderRepository readerRepository) {
+
         this.readersRepository = readerRepository;
     }
 
-    public ReadersController() {
-    }
+//    public ReadersController() {
+//    }
 
-    @GetMapping("/{id}/reader")
-    public List<Readers> getIssues(@PathVariable long id) {
+    @GetMapping("/{id}")
+    public List<Readers> getReader(@PathVariable long id) {
         return readersRepository.findById(id);
-
     }
 
+    @GetMapping("/all")
+    public List<Readers> getAll() {
+        return readersRepository.findAll();
+    }
 }

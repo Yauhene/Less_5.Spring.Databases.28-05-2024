@@ -24,7 +24,7 @@ public class IssueService {
 
   public Issue issue(IssueRequest request) {
 
-    long readerDebt = issueRepository.queryIssueByReaderId(request.getReaderId());
+//    long readerDebt = issueRepository.queryIssueByReaderId(request.getReaderId());
 
     if (bookRepository.findById(request.getBookId()) == null) {
       throw new NoSuchElementException("Не найдена книга с идентификатором \"" + request.getBookId() + "\"");
@@ -33,16 +33,16 @@ public class IssueService {
       throw new NoSuchElementException("Не найден читатель с идентификатором \"" + request.getReaderId() + "\"");
     }
     // можно проверить, что у читателя нет книг на руках (или его лимит не превышает в Х книг)
-    if (readerDebt >= 0) {
-
-      Issue iss = (Issue) issueRepository.findById(readerDebt);
-      long bookId = iss.getBookId();
-      String bName = bookRepository.findById(bookId).toString();
-      String debtDescription = "Долг читателя: книга \"" + bName + "\", перебьется пока.";
-
-      log.info(debtDescription);
-      throw new NoSuchElementException("Должок !!! \"" + bName + "\"");
-    }
+//    if (readerDebt >= 0) {
+//
+//      Issue iss = (Issue) issueRepository.findById(readerDebt);
+//      long bookId = iss.getBookId();
+//      String bName = bookRepository.findById(bookId).toString();
+//      String debtDescription = "Долг читателя: книга \"" + bName + "\", перебьется пока.";
+//
+//      log.info(debtDescription);
+//      throw new NoSuchElementException("Должок !!! \"" + bName + "\"");
+//    }
 
 
     Issue issues = new Issue(request.getBookId(), request.getReaderId());

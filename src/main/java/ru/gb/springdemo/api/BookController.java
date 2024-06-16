@@ -65,6 +65,7 @@ public class BookController {
     // восстановить в новых условиях
     @DeleteMapping("/del/{id}")
     public void deleteBook(@PathVariable long id) {
+
         booksRepository.deleteById(id);
     }
 }

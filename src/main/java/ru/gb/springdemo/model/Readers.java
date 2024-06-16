@@ -13,6 +13,7 @@ public class Readers {
   @Id
   private long id;
 
+  @Getter
   @Column(name = "name")
   private String name;
 
@@ -21,7 +22,4 @@ public class Readers {
     this.id = maxId++;
   }
 
-  public String getName() {
-    return this.name;
-  }
 }

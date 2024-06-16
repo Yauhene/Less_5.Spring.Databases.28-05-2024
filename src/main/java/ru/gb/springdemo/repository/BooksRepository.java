@@ -17,7 +17,7 @@ public interface BooksRepository extends JpaRepository<Books, Long>, PagingAndSo
     @Query("select max(id) from Books")
     long queryMaxId();
 
-    Books deleteById(long id);
+    void deleteById(long id);
 
     Books save(Books books);
 
