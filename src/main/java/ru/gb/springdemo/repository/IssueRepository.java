@@ -15,8 +15,8 @@ public interface IssueRepository  extends JpaRepository<Issue, Long>, PagingAndS
 //    @Query("select i.id, i.book_id, i.reader_id, i.issue_time, i.return_time from issue i where i.id = :id")
 //    List<Issue> queryIssueById(@Param("id")long id);
 
-//    @Query("select max(id) from Issue")
-//    Long queryIssuesMaxId();
+    @Query("select max(i.id) from Issue i")
+    Long queryIssuesMaxId();
 
 //    @Query("select i.id from issue i where i.reader_id = :id")
 //    Long queryIssueByReaderId(@Param("id") long id);
