@@ -17,7 +17,7 @@ public class Readers {
   @Column(name = "name")
   private String name;
 
-  public Readers(String name) {
+  public Readers() {
 
     this.id = maxId++;
   }

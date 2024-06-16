@@ -29,6 +29,7 @@ public class BookController {
      */
     @GetMapping(path = "/all")
     public List<Books> getBooks() {
+
         return booksRepository.findAll();
     }
 

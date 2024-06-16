@@ -12,7 +12,7 @@ public interface ReaderRepository extends JpaRepository<Readers, Long>, PagingAn
 
 
 
-    @Query("select b from Readers b where b.name = :name")
+    @Query("select r from Readers r where r.name = :name")
     List<Readers> queryReaderByName(String name);
 
 //    @Query("select max(id) from readers")
@@ -21,7 +21,9 @@ public interface ReaderRepository extends JpaRepository<Readers, Long>, PagingAn
     Readers deleteById(long id);
 
     Readers save(Readers readers);
+
     List<Readers> findAll();
+
     List<Readers> findById(long id);
 //    List<Readers> findByIssuesId(long id);
 }

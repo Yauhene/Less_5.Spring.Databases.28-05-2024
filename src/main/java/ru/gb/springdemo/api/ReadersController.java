@@ -14,25 +14,53 @@ import java.util.*;
 @RestController
 @RequestMapping("/reader")
 public class ReadersController {
-    private ReaderRepository readersRepository;
+    private ReaderRepository readerRepository;
     private IssueRepository issueRepository;
 
     @Autowired
     public void ReaderController(ReaderRepository readerRepository) {
 
-        this.readersRepository = readerRepository;
+        this.readerRepository = readerRepository;
     }
 
-//    public ReadersController() {
-//    }
+    public ReadersController() {
+    }
 
     @GetMapping("/{id}")
     public List<Readers> getReader(@PathVariable long id) {
-        return readersRepository.findById(id);
+        return readerRepository.findById(id);
     }
 
-    @GetMapping("/all")
-    public List<Readers> getAll() {
-        return readersRepository.findAll();
+    /**
+     * Метод получения списка всех читателей
+     * @return - список книг
+     */
+    @GetMapping(path = "/all")
+    public List<Readers> getAllReaders() {
+        return readerRepository.findAll();
+    }
+
+    /**
+     * Метод добавления нового читателя
+     * @return - список всех читателей
+     */
+
+    // восстановить в новых условиях
+    @PostMapping("/add")
+    public Readers addReader(@RequestBody Readers readers) {
+//    public void addBook() {
+        return readerRepository.save(readers);
+    }
+
+    /**
+     * Метод удаления читателя по его id
+     * @param id - id удаляемой книги
+     */
+
+    // восстановить в новых условиях
+    @DeleteMapping("/del/{id}")
+    public void deleteReader(@PathVariable long id) {
+
+        readerRepository.deleteById(id);
     }
 }
