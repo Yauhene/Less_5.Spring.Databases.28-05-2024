@@ -2,9 +2,6 @@ package ru.gb.springdemo.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import ru.gb.springdemo.repository.*;
-
-import static ru.gb.springdemo.repository.BooksRepository.*;
 
 
 @Entity

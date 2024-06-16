@@ -24,8 +24,4 @@ public interface BooksRepository extends JpaRepository<Books, Long>, PagingAndSo
     List<Books> findAll();
 
     List<Books> findById(long id);
-
-//    List<Books> findByReadersId(long id);
-
-//    List<Books> BookById(long id);
 }

@@ -12,9 +12,6 @@ public interface IssueRepository  extends JpaRepository<Issue, Long>, PagingAndS
 
     static long maxId = 1;
 
-//    @Query("select i.id, i.book_id, i.reader_id, i.issue_time, i.return_time from issue i where i.id = :id")
-//    List<Issue> queryIssueById(@Param("id")long id);
-
     @Query("select max(i.id) from Issue i")
     Long queryIssuesMaxId();
 
@@ -25,15 +22,5 @@ public interface IssueRepository  extends JpaRepository<Issue, Long>, PagingAndS
 
     Issue save(Issue issues);
 
-//    List<Issue> findAllIssues();
-
-//    Books findBooksById(long id);
-
-//    List<Issue> findByReadersId(long id);
-
     List<Issue> findById(long id);
-
-//    Readers findReadersById(long id);
-
-//    Books findBooksId(long id);
 }

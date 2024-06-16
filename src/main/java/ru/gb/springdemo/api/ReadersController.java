@@ -8,8 +8,6 @@ import ru.gb.springdemo.repository.*;
 
 import java.util.*;
 
-//import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
-
 @Slf4j
 @RestController
 @RequestMapping("/reader")

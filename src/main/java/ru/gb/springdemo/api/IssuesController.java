@@ -36,7 +36,6 @@ public class IssuesController {
       return ResponseEntity.notFound().build();
     }
 
-//    issue.setId(issue.getId());
     return ResponseEntity.status(HttpStatus.CREATED).body(issue);
   }
 

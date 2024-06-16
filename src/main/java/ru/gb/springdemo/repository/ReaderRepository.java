@@ -22,5 +22,4 @@ public interface ReaderRepository extends JpaRepository<Readers, Long>, PagingAn
     List<Readers> findAll();
 
     List<Readers> findById(long id);
-//    List<Readers> findByIssuesId(long id);
 }

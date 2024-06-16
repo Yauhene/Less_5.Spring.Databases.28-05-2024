@@ -13,8 +13,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/book")
 public class BookController {
-//    1.1 Реализовать контроллер по управлению книгами с ручками:
-//    GET /book/{id} - получить описание книги, DELETE /book/{id} - удалить книгу, POST /book - создать книгу
+
     private final BooksRepository booksRepository;
 
     @Autowired
