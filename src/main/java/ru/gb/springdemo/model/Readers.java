@@ -19,7 +19,7 @@ public class Readers {
 
   public Readers() {
 
-    this.id = maxId++;
+    this.id = maxId;
   }
 
 }

@@ -18,8 +18,8 @@ public interface IssueRepository  extends JpaRepository<Issue, Long>, PagingAndS
     @Query("select max(i.id) from Issue i")
     Long queryIssuesMaxId();
 
-//    @Query("select i.id from issue i where i.reader_id = :id")
-//    Long queryIssueByReaderId(@Param("id") long id);
+    @Query("select i.id from Issue i where (i.readerId = :id) and (i.returnTimestamp is null)")
+    Long queryIssueByReaderId(@Param("id") long id);
 
     void deleteById(Long id);
 

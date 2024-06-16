@@ -9,6 +9,7 @@ import ru.gb.springdemo.model.*;
 import ru.gb.springdemo.repository.*;
 import ru.gb.springdemo.service.IssueService;
 
+import java.time.*;
 import java.util.*;
 
 @Slf4j
@@ -25,21 +26,23 @@ public class IssuesController {
   @Autowired
   private IssueService service;
 
-  @PostMapping
+  @PostMapping("/add")
   public ResponseEntity<Issue> issueBook(@RequestBody IssueRequest request) {
-    log.info("Получен запрос на выдачу: readerId = {}, bookId = {}", request.getReaderId(), request.getBookId());
-
+    log.info("Получен запрос на выдачу:  bookId = {}, readerId = {}, issueTimestamp = {}",  request.getBookId(), request.getReaderId(), LocalDateTime.now());
     Issue issue;
     try {
       issue = service.issue(request);
     } catch (NoSuchElementException e) {
       return ResponseEntity.notFound().build();
     }
+
+//    issue.setId(issue.getId());
     return ResponseEntity.status(HttpStatus.CREATED).body(issue);
   }
 
   @GetMapping(path = "/all")
   public List<Issue> getIssues() {
+
     return List.copyOf(issueRepository.findAll());
   }
 
@@ -48,4 +51,13 @@ public class IssuesController {
       return issueRepository.findById(id);
     }
 
+  /**
+   * Метод удаления записи о выдаче по ее id
+   * @param id - id удаляемой записи
+   */
+  @DeleteMapping("/del/{id}")
+  public void deleteById(@PathVariable long id) {
+    issueRepository.deleteById(id);
+    Issue.maxId = issueRepository.queryIssuesMaxId();
+  }
 }

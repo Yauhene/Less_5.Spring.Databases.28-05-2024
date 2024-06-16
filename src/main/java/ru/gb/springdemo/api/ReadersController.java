@@ -44,11 +44,11 @@ public class ReadersController {
      * Метод добавления нового читателя
      * @return - список всех читателей
      */
-
     // восстановить в новых условиях
     @PostMapping("/add")
     public Readers addReader(@RequestBody Readers readers) {
-//    public void addBook() {
+        readers.setId(readers.getId() + 1);
+        Readers.maxId = readerRepository.queryMaxId() + 1;
         return readerRepository.save(readers);
     }
 
@@ -56,11 +56,9 @@ public class ReadersController {
      * Метод удаления читателя по его id
      * @param id - id удаляемой книги
      */
-
-    // восстановить в новых условиях
     @DeleteMapping("/del/{id}")
     public void deleteReader(@PathVariable long id) {
-
         readerRepository.deleteById(id);
+        Readers.maxId = readerRepository.queryMaxId();
     }
 }

@@ -38,7 +38,6 @@ public class BookController {
      * @param id - id нужной книги
      * @return - книга
      */
-    // восстановить в новых условиях
     @GetMapping("/{id}")
     public Books getBook(@PathVariable long id) {
         return booksRepository.findById(id).stream()
@@ -50,11 +49,9 @@ public class BookController {
      * Метод добавления новой книги
      * @return - список всех книг
      */
-
-    // восстановить в новых условиях
     @PostMapping("/add")
     public Books addBook(@RequestBody Books books) {
-//    public void addBook() {
+        books.setId(books.getId() + 1);
         return booksRepository.save(books);
     }
 
@@ -62,11 +59,9 @@ public class BookController {
      * Метод удаления книги по ее id
      * @param id - id удаляемой книги
      */
-
-    // восстановить в новых условиях
     @DeleteMapping("/del/{id}")
     public void deleteBook(@PathVariable long id) {
-
         booksRepository.deleteById(id);
+        Books.maxId = booksRepository.queryMaxId();
     }
 }

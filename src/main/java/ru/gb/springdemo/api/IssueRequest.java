@@ -2,6 +2,8 @@ package ru.gb.springdemo.api;
 
 import lombok.Data;
 
+import java.time.*;
+
 /**
  * Запрос на выдачу
  */
@@ -9,13 +11,17 @@ import lombok.Data;
 public class IssueRequest {
 
   /**
+   * Идентификатор книги
+   */
+  private long bookId;
+
+  /**
    * Идентификатор читателя
    */
   private long readerId;
 
   /**
-   * Идентификатор книги
+   * Идентификатор времени выдачи
    */
-  private long bookId;
-
+  private LocalDateTime issueTimeStamp = LocalDateTime.now();
 }

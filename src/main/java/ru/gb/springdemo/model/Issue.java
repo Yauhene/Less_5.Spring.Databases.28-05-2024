@@ -37,7 +37,15 @@ public class Issue {
   private LocalDateTime returnTimestamp;
 
   public Issue(long bookId, long readerId) {
-    this.id = maxId++;
+
+    this.id = maxId;
+    this.bookId = bookId;
+    this.readerId = readerId;
+    this.setIssueTimestamp(LocalDateTime.now());
+  }
+
+  public Issue() {
+
   }
 
   public void setReturnTimestamp() {
@@ -68,26 +76,4 @@ public class Issue {
     return returnTimestamp;
   }
 
-
-
-//  public String getReaderName() {
-//    long readerId = this.readerId;
-//    Readers readers = ReaderRepository.findById(readerId);
-//    List<Readers> rList = List.copyOf(ReaderRepository.findAll());
-//    Optional<Readers> reader = rList.stream()
-//            .filter(it -> Objects.equals(it.getId(), readerId))
-//            .findFirst();
-//    String readerName = reader.get().getName();
-//    return readerName;
-//  }
-
-//  public String getBookName() {
-//    long bookId = this.bookId;
-//    List<Books> bList = List.copyOf(BooksRepository.findAll());
-//    Optional<Books> book = bList.stream()
-//            .filter(it -> Objects.equals(it.getId(), bookId))
-//            .findFirst();
-//    String bookName = book.get().getName();
-//    return bookName;
-//  }
 }

@@ -17,9 +17,8 @@ public class SpringDataDemoApplication {
 		IssueRepository issueRepository = context.getBean(IssueRepository.class);
 
 		System.out.println(booksRepository.findAll());
-		Books.maxId = booksRepository.queryMaxId() + 1;
-		Readers.maxId = readerRepository.queryMaxId() + 1;
-		Issue.maxId = issueRepository.queryIssuesMaxId() + 1;
-		System.out.println("Issue.maxId = " + Issue.maxId);
+		Books.maxId = booksRepository.queryMaxId();
+		Readers.maxId = readerRepository.queryMaxId();
+		Issue.maxId = issueRepository.queryIssuesMaxId();
 	}
 }

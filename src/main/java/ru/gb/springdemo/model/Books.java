@@ -21,6 +21,6 @@ public class Books {
 
   public Books() {
 
-    this.id = maxId++;
+    this.id = maxId;
   }
 }
